@@ -1,0 +1,23 @@
+<!-- This project uses Bootstrap -->
+<div class="wrapper">
+  <nav>
+    <ul class="pagination">
+      <li class="page-item" [ngClass]="{disabled:currentPage===0}">
+        <a (click)="currentPage=currentPage-1" class="page-link">Prev</a>
+      </li>
+      <!-- <ng-container *ngFor="let image of images; let i =index"> -->
+      <ng-container *appTimes="images.length; let i=index">
+        <li class="page-item" [ngClass]="{active:i===currentPage}" *ngIf="checkIndex(i)">
+          <a (click)="currentPage=i" class="page-link">{{ i+1 }}</a>
+        </li>
+      </ng-container>
+      <li class="page-item" [ngClass]="{disabled:currentPage===images.length-1}">
+        <a (click)="currentPage=currentPage+1" class="page-link">Next</a>
+      </li>
+    </ul>
+  </nav>
+  <h4 [appMyClass]="{'test-class':classApply}">{{images[currentPage].title}}</h4>
+  <div class="img-container">
+    <img [src]="images[currentPage].imgUrl" alt="landscape image">
+  </div>
+</div>
