@@ -1,0 +1,45 @@
+<h2 class="title has-text-centered"> {{title}}</h2>
+<div class="container">
+    <div class="columns is-centered">
+        <div class="box column is-one-third">
+            <div class="field">
+                <label for="length">Enter length</label>
+                <input class="input" type="number" id="length" (input)="addLength($event.target.value)">
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <input (change)="changeIncludeLetters()" type="checkbox" />
+                        Use Letters
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <input (change)="changeIncludeNums()" type="checkbox" />
+                        Use Numbers
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <input (change)="changeIncludeSymbs()" type="checkbox" />
+                        Use Symbols
+                    </label>
+                </div>
+            </div>
+
+            <button (click)="onClick()" [disabled]="length<1 || (!includeLetters&& !includeNums && !includeSymb)"
+                class="button is-link is-fullwidth">Generate!</button>
+            <div class="box" *ngIf="password">
+                <label for="">Your password</label>
+                <input type="text" [value]="password?password:'not valid'" class="input">
+            </div>
+        </div>
+    </div>
+</div>
